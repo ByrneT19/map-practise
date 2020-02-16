@@ -56,28 +56,28 @@ function theDiv() {
 //     <h3>House Number:${values}</h3>
 //     <h3>Car Type:${values}</h3>
 //     `)
-    
+
 // }
 
 function tutorial() {
-    
-const numbers = [2, 4, 8];
-const addTwo = number => number + 1
-// const result = numbers.map(addTwo) 
-const result = mapArray(addTwo, numbers)
-mapArray(addTwo, numbers)  //for functional programming you pass in the transform first, value second
 
-function mapArray(transform, array) {
-    let transformedArray = [];
-    for(let i = 0; i < array.length; i++) {
-        // const currentItem = array[i];
-        // const transformed = transform(currentItem)
-        // transformedArray.push(transformed)
-        transformedArray.push(transform(array[i])) //more efficient version of the above three lines
+    const numbers = [2, 4, 8];
+    const addTwo = number => number + 1
+    // const result = numbers.map(addTwo) 
+    const result = mapArray(addTwo, numbers)
+    mapArray(addTwo, numbers)  //for functional programming you pass in the transform first, value second
+
+    function mapArray(transform, array) {
+        let transformedArray = [];
+        for (let i = 0; i < array.length; i++) {
+            // const currentItem = array[i];
+            // const transformed = transform(currentItem)
+            // transformedArray.push(transformed)
+            transformedArray.push(transform(array[i])) //more efficient version of the above three lines
+        }
+        return transformedArray;
     }
-    return transformedArray;
-}
-console.log('tutorial example', result)
+    console.log('tutorial example', result)
 }
 
 function menu() {
@@ -87,7 +87,7 @@ function menu() {
 
     function cooked(transform, array) {
         transformedArray = [];
-        for(let i = 0; i < array.length; i++) {
+        for (let i = 0; i < array.length; i++) {
             const currentItem = array[i];
             const transformed = transform(currentItem);
             transformedArray.push(transformed);
@@ -99,23 +99,43 @@ function menu() {
 
 function takeAway() {
     const mainIngredient = ['chips', 'beef', 'chicken', 'cheesecake'];
-    const spiceItup = mainIngredient =>  mainIngredient + ' curry sauce, yum!';
+    const spiceItup = mainIngredient => mainIngredient + ' and curry sauce, yum!';
     const hot = served(spiceItup, mainIngredient);
 
     function served(transform, array) {
         finishedDish = [];
-        for(let i = 0; i < array.length; i++) {
+        for (let i = 0; i < array.length; i++) {
             // const currentItem = array[i];
             // const transformed = transform(currentItem);
             // finishedDish.push(transformed);
             finishedDish.push(transform(array[i]))
         }
-        return transformedArray
+        return finishedDish
     }
     console.log('curry!', hot)
     $('#five').html(`
     ${hot}
     `)
+}
+
+function filterArrayHome() {
+    const numbers = [2, 4, 8, 9]
+    const isMoreThan5 = number => number > 5;
+    const result =
+        filterArray(isMoreThan5, numbers);
+    // numbers.filter(isMoreThan5);
+
+    function filterArray(predicate, array) {
+        filteredArray = [];
+        for(let i = 0; i < array.length; i++) {
+            const currentItem = array[i];
+            if (predicate(currentItem)) {
+                return filteredArray.push(currentItem)
+            }
+            return result
+        } 
+    }
+    console.log('filter practise', result)
 }
 
 function run() {
@@ -126,6 +146,7 @@ function run() {
     tutorial();
     menu();
     takeAway();
+    filterArrayHome();
 }
 
 $(run);
