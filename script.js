@@ -25,14 +25,17 @@ function theDiv() {
     console.log('three', newNums)
 }
 
-// function mapMake() {
-//     const items = ['shoe', 'boot', 'hat'];
-//     const materials = ['synthetic', 'leather', 'felt'];
-//     const group = items.map((item, material) => {
-//         return item + materials.map((material) => material)
-//     });
-//     console.log('items map', group)
-// }
+function mapMake() {
+    const items = ['shoe', 'boot', 'hat'];
+    const materials = ['synthetic', 'leather', 'felt'];
+    const group = items.map((item) => {
+        return item
+    });
+    const type = materials.map((material) => {
+        return material
+    })
+    console.log('items map', group, type)
+}
 
 // function valuePairs() {
 //     const pairs = [
@@ -136,13 +139,13 @@ function filterArrayHome() {
 
     function filterArray(predicate, array) {
         filteredArray = [];
-        for(let i = 0; i < array.length; i++) {
+        for (let i = 0; i < array.length; i++) {
             const currentItem = array[i];
             if (predicate(currentItem)) {
                 return filteredArray.push(currentItem)
             }
-            return filteredArray
-        } 
+        }
+        return filteredArray
     }
     console.log('filter practise', result)
 }
@@ -151,7 +154,7 @@ function run() {
     theMap();
     theDoble();
     theDiv();
-    // mapMake();
+    mapMake();
     // valuePairs();
     tutorial();
     menu();
